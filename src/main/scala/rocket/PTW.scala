@@ -246,6 +246,7 @@ class PTW(n: Int)(implicit edge: TLEdgeOut, p: Parameters) extends CoreModule()(
   io.mem.req.bits.cmd  := M_XRD
   io.mem.req.bits.typ  := log2Ceil(xLen/8)
   io.mem.req.bits.addr := pte_addr
+  io.mem.req.bits.no_alloc := true // XXX
   io.mem.s1_kill := l2_hit || state =/= s_wait1
   io.mem.s2_kill := Bool(false)
 
